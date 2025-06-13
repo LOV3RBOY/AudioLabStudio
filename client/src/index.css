@@ -1,0 +1,215 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Audio Production Studio Dark Theme */
+    
+    /* Base Colors */
+    --background: 220 15% 8%;
+    --background-elevated: 220 15% 12%;
+    --background-panel: 220 15% 10%;
+    --background-surface: 220 15% 14%;
+    
+    --foreground: 220 15% 95%;
+    --foreground-muted: 220 10% 75%;
+    --foreground-subtle: 220 8% 60%;
+    
+    /* Studio Colors */
+    --primary: 280 100% 70%;
+    --primary-hover: 280 100% 75%;
+    --primary-muted: 280 50% 25%;
+    
+    --accent: 190 100% 60%;
+    --accent-hover: 190 100% 65%;
+    --accent-muted: 190 50% 20%;
+    
+    --success: 120 60% 50%;
+    --warning: 35 100% 60%;
+    --error: 0 70% 60%;
+    
+    /* Audio-specific Colors */
+    --waveform-primary: 280 100% 70%;
+    --waveform-secondary: 190 100% 60%;
+    --waveform-played: 280 80% 80%;
+    --waveform-background: 220 15% 12%;
+    --waveform-grid: 220 10% 25%;
+    
+    /* Stem Colors */
+    --stem-drums: 0 70% 60%;
+    --stem-bass: 280 100% 70%;
+    --stem-vocals: 60 100% 60%;
+    --stem-guitar: 35 100% 60%;
+    --stem-keys: 190 100% 60%;
+    --stem-synth: 300 100% 70%;
+    --stem-strings: 120 60% 50%;
+    --stem-brass: 25 100% 60%;
+    --stem-fx: 240 100% 70%;
+    --stem-other: 220 15% 60%;
+    
+    /* Border and Surface */
+    --border: 220 13% 18%;
+    --input: 220 13% 18%;
+    --ring: 280 100% 70%;
+    
+    /* Additional Studio Variables */
+    --card: 220 15% 10%;
+    --card-foreground: 220 15% 95%;
+    --popover: 220 15% 12%;
+    --popover-foreground: 220 15% 95%;
+    --muted: 220 13% 18%;
+    --muted-foreground: 220 10% 75%;
+    --destructive: 0 70% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --secondary: 220 13% 18%;
+    --secondary-foreground: 220 15% 95%;
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    border-color: hsl(var(--border));
+  }
+  
+  body {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-feature-settings: "cv11", "ss01";
+    font-variation-settings: "opsz" 32;
+    overflow-x: hidden;
+  }
+  
+  /* Custom scrollbars */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--background-elevated));
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--border));
+    border-radius: 4px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--foreground-subtle));
+  }
+}
+
+@layer components {
+  /* Audio Studio Components */
+  .waveform-container {
+    background: hsl(var(--waveform-background));
+    border: 1px solid hsl(var(--border));
+    border-radius: calc(var(--radius) - 2px);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .stem-track {
+    padding: 12px;
+    border-bottom: 1px solid hsl(var(--border));
+    transition: all 0.2s ease;
+  }
+  
+  .stem-track:hover {
+    background: hsl(var(--background-elevated));
+  }
+  
+  .mixer-channel {
+    background: hsl(var(--background-panel));
+    border: 1px solid hsl(var(--border));
+    border-radius: var(--radius);
+    padding: 16px;
+    min-height: 300px;
+  }
+  
+  .transport-controls {
+    background: hsl(var(--background-elevated));
+    border: 1px solid hsl(var(--border));
+    border-radius: var(--radius);
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  
+  .level-meter {
+    width: 4px;
+    height: 120px;
+    background: hsl(var(--background-elevated));
+    border-radius: 2px;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .level-meter-fill {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background: linear-gradient(
+      to top,
+      hsl(var(--success)),
+      hsl(var(--warning)) 70%,
+      hsl(var(--error)) 90%
+    );
+    transition: height 0.1s ease;
+  }
+}
+
+@layer utilities {
+  /* Studio-specific utilities */
+  .bg-background-elevated {
+    background-color: hsl(var(--background-elevated));
+  }
+  
+  .bg-background-panel {
+    background-color: hsl(var(--background-panel));
+  }
+  
+  .bg-background-surface {
+    background-color: hsl(var(--background-surface));
+  }
+  
+  .text-foreground-muted {
+    color: hsl(var(--foreground-muted));
+  }
+  
+  .text-foreground-subtle {
+    color: hsl(var(--foreground-subtle));
+  }
+  
+  .border-border {
+    border-color: hsl(var(--border));
+  }
+  
+  /* Stem color utilities */
+  .text-stem-drums { color: hsl(var(--stem-drums)); }
+  .text-stem-bass { color: hsl(var(--stem-bass)); }
+  .text-stem-vocals { color: hsl(var(--stem-vocals)); }
+  .text-stem-guitar { color: hsl(var(--stem-guitar)); }
+  .text-stem-keys { color: hsl(var(--stem-keys)); }
+  .text-stem-synth { color: hsl(var(--stem-synth)); }
+  .text-stem-strings { color: hsl(var(--stem-strings)); }
+  .text-stem-brass { color: hsl(var(--stem-brass)); }
+  .text-stem-fx { color: hsl(var(--stem-fx)); }
+  .text-stem-other { color: hsl(var(--stem-other)); }
+  
+  .bg-stem-drums { background-color: hsl(var(--stem-drums)); }
+  .bg-stem-bass { background-color: hsl(var(--stem-bass)); }
+  .bg-stem-vocals { background-color: hsl(var(--stem-vocals)); }
+  .bg-stem-guitar { background-color: hsl(var(--stem-guitar)); }
+  .bg-stem-keys { background-color: hsl(var(--stem-keys)); }
+  .bg-stem-synth { background-color: hsl(var(--stem-synth)); }
+  .bg-stem-strings { background-color: hsl(var(--stem-strings)); }
+  .bg-stem-brass { background-color: hsl(var(--stem-brass)); }
+  .bg-stem-fx { background-color: hsl(var(--stem-fx)); }
+  .bg-stem-other { background-color: hsl(var(--stem-other)); }
+}
